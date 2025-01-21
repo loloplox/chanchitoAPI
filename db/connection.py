@@ -9,7 +9,7 @@ SQL_HOST = config("SQL_HOST")
 SQL_PORT = config("SQL_PORT")
 SQL_DATABASE = config("SQL_DATABASE")
 
-SQL_URL = f"mysql+mysqlconnector://{SQL_USER}:{SQL_PASSWORD}@{SQL_HOST}:{SQL_PORT}/{SQL_DATABASE}"
+SQL_URL = f"postgresql+psycopg2://{SQL_USER}:{SQL_PASSWORD}@{SQL_HOST}:{SQL_PORT}/{SQL_DATABASE}"
 
 engine = create_engine(SQL_URL, echo=True)
 
