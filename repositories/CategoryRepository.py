@@ -17,6 +17,11 @@ class CategoryRepository:
         return [CategoryResponse(**category.model_dump()) for category in categories]
 
     def get_all_categories_by_type_transaction(self, type_transaction: int) -> list[CategoryResponse]:
+        if type_transaction == 1:
+            type_transaction = TypeTransaction.TYPE_BILL
+        else:
+            type_transaction = TypeTransaction.TYPE_SAVING
+
         categories = self.session.execute(
             select(Category).where(Category.type_transaction == type_transaction)).scalars().all()
 
